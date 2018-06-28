@@ -1,0 +1,21 @@
+body {
+    background-image: url("../images/bg.png")
+}
+
+#maincontain {
+    background: white;
+    /* height: 500px; */
+    border: 5px purple solid;
+    background: #ececec;
+}
+
+.container {
+    text-align: center;
+    
+}
+
+#logo {
+    height: 100px;
+    margin-bottom: -12px;
+}
+
