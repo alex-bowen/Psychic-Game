@@ -12,11 +12,11 @@ body {
 
 .container {
     text-align: center;
+    margin-top: 50px;
     
 }
 
 #logo {
-    height: 100px;
+    width: 300px;
     margin-bottom: -12px;
 }
-

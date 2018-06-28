@@ -1,9 +1,10 @@
 /* 
-1. Select a random letter (probably an array, assign numbers to letters or from a string?)
+1. Computer selects a letter.
 2. User selects a letter
 3. If userLetter === randomLetter userWins++
 4. Else user losses++
-5. User guesses = userLetter
+5. 10 chances to guess, then restarts with +1 loss.
+6. After wins, restarts with +1 win. 
 */
 
 
@@ -17,18 +18,14 @@ var losses = 0;
 var guessesLeft = 10;
 var guesses = [];
 
-document.onkeyup = function () {
 
     // The computer "thinks of" a letter...
-    var computerGuess = randomLetter[Math.floor(Math.random() * randomLetter.length)];
+    var computerChoice = randomLetter[Math.floor(Math.random() * randomLetter.length)];
    
     // ...and we log it to the console.
-    console.log("Computer Guess: " + computerGuess);
+    console.log("Computer Choice: " + computerChoice);
 
-
-    (function usingGuesses() {
-        guessesLeft--;
-    })
+document.onkeyup = function () {
 
 
     // The user guesses a letter.
@@ -42,21 +39,33 @@ document.onkeyup = function () {
     guesses.push(userGuess);
    
 
+    // Subtracts from 10 starting guesses
+    do {
+        guessesLeft--;
+    } while ("guessesleft" > 0);
 
     // logic for wins/losses  
-    if (userGuess === computerGuess) {
-        wins++;
-    } else if (userGuess !== computerGuess) {
+    if (userGuess === computerChoice) {
+        wins++; 
+        // Computer selects new letter logs it to the console.
+    } else if (userGuess !== computerChoice && guessesLeft === 0) {
         losses++;
+    } 
+
+
+    // Just for now to make sure else if is working
+    if (guessesLeft === -1){
+        location.reload();
+    
     }
 
-    // HOW DO I ALLOW A NUMBER OF GUESSES BEFORE RESTARTING?
+    
 
     // Logging wins/losses to the console.
     console.log("Wins: " + wins);
     console.log("Losses: " + losses);
     console.log("Guesses: " + guesses);
-
+    console.log("Guesses left: " + guessesLeft);
 
     document.getElementById("wins").innerHTML = ("Wins: " + wins);
 
@@ -64,8 +73,8 @@ document.onkeyup = function () {
 
     document.getElementById("guesses").innerHTML = ("Guesses so far: " + guesses);
 
-    
     document.getElementById("guessesLeft").innerHTML = ("Guesses left: " + guessesLeft);
-}
 
+
+}
 
