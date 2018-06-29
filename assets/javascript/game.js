@@ -19,17 +19,24 @@ var guessesLeft = 10;
 var guesses = [];
 
 
+// The computer "thinks of" a letter...
+var computerChoice;
+
+function chooseRandomLetter() {
     // The computer "thinks of" a letter...
-    var computerChoice = randomLetter[Math.floor(Math.random() * randomLetter.length)];
-   
+    computerChoice = randomLetter[Math.floor(Math.random() * randomLetter.length)];
     // ...and we log it to the console.
     console.log("Computer Choice: " + computerChoice);
+}
 
+chooseRandomLetter();
+
+// The user guesses a letter.
 document.onkeyup = function () {
 
 
-    // The user guesses a letter.
-        // We create a variable called userGuess w/ value of the key that has just been released, made into a string, and converted to lowercase. 
+
+    // We create a variable called userGuess w/ value of the key that has just been released, made into a string, and converted to lowercase. 
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     
     // We log it to the console as well.
@@ -47,7 +54,7 @@ document.onkeyup = function () {
     // logic for wins/losses  
     if (userGuess === computerChoice) {
         wins++; 
-        // Computer selects new letter logs it to the console.
+        // Computer selects new letter logs it to the console. // Reset guesses 
     } else if (userGuess !== computerChoice && guessesLeft === 0) {
         losses++;
     } 
