@@ -3,7 +3,7 @@
 2. User selects a letter
 3. If userLetter === randomLetter userWins++
 4. Else user losses++
-5. 10 chances to guess, then restarts with +1 loss.
+5. 9 chances to guess, then restarts with +1 loss.
 6. After wins, restarts with +1 win. 
 */
 
@@ -15,12 +15,17 @@ var randomLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 // Variables to hold stats
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft = 9;
 var guesses = [];
 
-
-// The computer "thinks of" a letter...
 var computerChoice;
+
+
+function resetGuesses() {
+    guesses = [];
+    guessesLeft = 9;
+    chooseRandomLetter();
+}
 
 function chooseRandomLetter() {
     // The computer "thinks of" a letter...
@@ -35,18 +40,15 @@ chooseRandomLetter();
 document.onkeyup = function () {
 
 
-
     // We create a variable called userGuess w/ value of the key that has just been released, made into a string, and converted to lowercase. 
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); 
     // We log it to the console as well.
     console.log("User Guess: " + userGuess);
-   
     // We push that guess to the guesses array.
     guesses.push(userGuess);
    
 
-    // Subtracts from 10 starting guesses
+    // Subtracts from 9 starting guesses
     do {
         guessesLeft--;
     } while ("guessesleft" > 0);
@@ -54,19 +56,14 @@ document.onkeyup = function () {
     // logic for wins/losses  
     if (userGuess === computerChoice) {
         wins++; 
+        resetGuesses();
         // Computer selects new letter logs it to the console. // Reset guesses 
     } else if (userGuess !== computerChoice && guessesLeft === 0) {
         losses++;
+        resetGuesses();
     } 
 
-
-    // Just for now to make sure else if is working
-    if (guessesLeft === -1){
-        location.reload();
-    
-    }
-
-    
+      
 
     // Logging wins/losses to the console.
     console.log("Wins: " + wins);
