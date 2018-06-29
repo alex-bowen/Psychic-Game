@@ -11,7 +11,7 @@ Upon loading the page, the computer "thinks" of a letter and logs it to the cons
     console.log("Computer Choice: " + computerChoice);
     }
 
-The user selects a letter and it's stored in an array for previously guessed letters. Then, the computer checks to see if that letter is the same as the letter it's "thinking of" (computerChoice) with an if/else statement. If it matches, it adds a point to the "Wins" variable and resets the number of tries and the array for previously guessed letters. If not, after 9 guesses, a point is added to the "Losses" variable" and resets the number of tries and the array for previously guessed letters.
+The user selects a letter (userGuess). It's stored in an array for previously guessed letters. After that, the computer uses an if/else statement to check if the userGuess matches the letter it's "thinking of" (computerChoice). If it matches, it adds a point to the "Wins" variable and resets the number of tries (guessesLeft) and the array for previously guessed letters (guesses). If not, after 8 more guesses, a point is added to the "Losses" variable, and the guessesLeft and guesses variables are reset.
 
 
 Function for reset: 
