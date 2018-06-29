@@ -17,8 +17,10 @@ The user selects a letter and it's stored in an array for previously guessed let
 Function for reset: 
 
     function resetGuesses() {
+    // resets variables
     guesses = [];
     guessesLeft = 9;
+    // "thinks of" a new letter
     chooseRandomLetter();
     }
 
@@ -26,7 +28,7 @@ Subtracts from 9 starting guesses:
 
     do {
         guessesLeft--;
-    } while ("guessesleft" > 0);
+    } while ("guessesLeft" > 0);
    
    
 Logic for wins/losses:
